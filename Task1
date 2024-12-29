@@ -1,0 +1,42 @@
+CREATE TABLE students(
+  StudentID INT PRIMARY KEY,
+  Name varchar(50),
+  DOB Date,
+  email varchar(75),
+  Gender char(1)
+  );
+CREATE TABLE Courses(
+  courseId INT PRIMARY KEY,
+  coursename varchar(50),
+  coursedescription TEXT,
+  );
+CREATE TABLE Enrollments(
+  EnrollmentId INT PRIMARY KEY,
+  StudentID INT,
+  courseId INT,
+  Grade char(2),
+  FOREIGN KEY(StudentID) REFERENCES students(StudentID)
+  FOREIGN KEY(courseId) REFERENCES Courses(courseId)
+  );
+
+INSERT INTO students (StudentID, Name, DOB, Gender, email)
+VALUES (1, 'John', '2000-01-15', 'M', 'john.doe@example.com');
+
+INSERT INTO Courses (courseId, coursename, coursedescription)
+VALUES (101, 'Intro to Programming', 'Learn the basics of programming');
+
+
+INSERT INTO Enrollments (EnrollmentID, StudentID, courseId, Grade)
+VALUES (1, 1, 101, 'A');
+
+SELECT * FROM Student;
+SELECT * from Courses;
+SELECT * from Enrollment;
+SELECT students.Name, Courses.courseName, Enrollments.Grade
+FROM Enrollments
+JOIN students ON Enrollments.StudentID = students.StudentID
+JOIN Courses ON Enrollments.courseId = Courses.courseId;
+
+  
+  
+  
