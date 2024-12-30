@@ -1,3 +1,5 @@
+//STUDENT DATABASE MANAGEMENT SYSTEM
+
 CREATE TABLE students(
   StudentID INT PRIMARY KEY,
   Name varchar(50),
